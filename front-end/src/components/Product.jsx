@@ -32,7 +32,7 @@ export default function Product(props) {
     );
 
     if (!productSaved) {
-      const productCartData = { name, price, quantity: currentQuantity };
+      const productCartData = { name, price, quantity: currentQuantity, img: urlImage };
       dispatch(actionAddProduct(productCartData));
     } else {
       const productUpdated = modifyProductSaved(currentQuantity, productSaved);
@@ -69,38 +69,56 @@ export default function Product(props) {
   };
 
   return (
-    <div key={ id }>
-      <p data-testid={ `${dataTestIds[16]}${id}` }>{price.replace('.', ',')}</p>
-      <p data-testid={ `${dataTestIds[15]}${id}` }>{name}</p>
+    <div
+      key={ id }
+      className="flex flex-col flex-wrap
+      items-center border-gray-300 border-solid border w-[20em] shadow-md mb-5"
+    >
       <img
         data-testid={ `${dataTestIds[17]}${id}` }
         src={ urlImage }
         alt={ name }
         width="240px"
       />
-      <span>
-        <button
-          type="button"
-          onClick={ () => removeItem(price) }
-          data-testid={ `${dataTestIds[19]}${id}` }
+      <div className="w-[20em] bg-black flex flex-col items-center">
+        <p
+          className="text-white text-xl"
+          data-testid={ `${dataTestIds[15]}${id}` }
         >
-          -
-        </button>
-        <input
-          type="number"
-          value={ quantity }
-          min="0"
-          data-testid={ `${dataTestIds[20]}${id}` }
-          onChange={ (e) => defineQuantity(e, price) }
-        />
-        <button
-          type="button"
-          onClick={ () => addItem(price) }
-          data-testid={ `${dataTestIds[18]}${id}` }
+          {name}
+        </p>
+        <p
+          className="text-white font-bold text-xl"
+          data-testid={ `${dataTestIds[16]}${id}` }
         >
-          +
-        </button>
-      </span>
+          {`R$ ${price.replace('.', ',')}`}
+        </p>
+        <span className="rounded-md">
+          <button
+            className="text-white bg-[#F81127] w-6 rounded-tl-lg rounded-bl-lg h-8"
+            type="button"
+            onClick={ () => removeItem(price) }
+            data-testid={ `${dataTestIds[19]}${id}` }
+          >
+            -
+          </button>
+          <input
+            className="w-10 text-center h-8"
+            value={ quantity }
+            min="0"
+            data-testid={ `${dataTestIds[20]}${id}` }
+            onChange={ (e) => defineQuantity(e, price) }
+          />
+          <button
+            className="text-white bg-[#F81127] w-6 rounded-tr-lg rounded-br-lg mb-2 h-8"
+            type="button"
+            onClick={ () => addItem(price) }
+            data-testid={ `${dataTestIds[18]}${id}` }
+          >
+            +
+          </button>
+        </span>
+      </div>
     </div>
   );
 }

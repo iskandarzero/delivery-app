@@ -22,9 +22,12 @@ export default function NavBar() {
           <div className="flex">
             <Link
               to="/customer/products"
-              className={ `
-              mr-8 bg-[#F81127] border w-[150px]
-              items-center rounded-full py-2 flex justify-center text-white text-[20px]` }
+              className={ `flex text-white bg-gradient-to-r from-red-600
+                       via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 
+                       focus:outline-none focus:ring-red-600
+                       shadow-sm shadow-red-600
+                       dark:shadow-sm dark:shadow-red-800 font-medium rounded-lg
+                       text-sm px-5 py-2.5 text-center mr-2 mb-2` }
               data-testid={ datatestids[11] }
             >
               <img className="mr-4" src={ iconDrink } alt="IconDrink" />
@@ -37,9 +40,12 @@ export default function NavBar() {
                   : '/seller/orders'
               }
               data-testid={ datatestids[12] }
-              className={ `
-              mr-8 bg-[#F81127] border w-[200px]
-              items-center rounded-full py-2 flex justify-center text-white text-[20px]` }
+              className={ `flex text-white bg-gradient-to-r from-red-600
+                       via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 
+                       focus:outline-none focus:ring-red-600
+                       shadow-sm shadow-red-600
+                       dark:shadow-sm dark:shadow-red-800 font-medium rounded-lg
+                       text-sm px-5 py-2.5 text-center mr-2 mb-2` }
             >
               <img className="mr-4" src={ iconBike } alt="iconBike" />
               {userStorage.role === 'customer' ? 'Meus pedidos' : 'Pedidos'}

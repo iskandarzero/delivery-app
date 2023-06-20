@@ -14,10 +14,12 @@ export default function SellerOrders() {
   }, []);
 
   return (
-    <div>
+    <div className="container  mx-auto w-full min-h-screen">
       <Navbar />
-      {orders
+      <div className="flex justify-center flex-wrap">
+        {orders
         && orders.map((order, index) => <SellerOrder key={ index } order={ order } />)}
+      </div>
     </div>
   );
 }
